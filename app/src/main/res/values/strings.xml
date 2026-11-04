@@ -1,4 +1,16 @@
 <resources>
+    <!-- Localized network and HTTP error messages -->
+    <string name="network_error_cloudflare">Сайт запросил проверку (Cloudflare). Отключите VPN/прокси или откройте 4PDA в браузере и повторите.</string>
+    <string name="network_error_unauthorized">Требуется авторизация (401). Войдите в аккаунт для доступа к этому разделу.</string>
+    <string name="network_error_forbidden">Доступ запрещён (403). Для части контента нужна авторизация или другая сеть.</string>
+    <string name="network_error_not_found">Страница не найдена (404). Возможно, API форума изменилось или страница удалена.\nURL: %1$s</string>
+    <string name="network_error_rate_limit">Слишком много запросов подряд (429). 4PDA временно ограничил загрузку. Подождите около 15 секунд и обновите.</string>
+    <string name="network_error_news">Не удалось загрузить новость</string>
+    <string name="network_error_timeout">Сервер или сеть не ответили вовремя. Проверьте подключение и попробуйте снова.</string>
+    <string name="network_error_forum_host">Не удалось подключиться к 4pda.to. Проверьте интернет или попробуйте другую сеть.</string>
+    <string name="network_error_host">Не удалось найти сервер. Проверьте подключение к интернету.</string>
+    <string name="network_error_ssl">Ошибка защищённого соединения. Возможно, сайт заблокирован провайдером или истёк сертификат.</string>
+
     <string name="app_name" translatable="false">ProPDA</string>
     <string name="pager_bullet_separator" formatted="false">%s / %s</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
