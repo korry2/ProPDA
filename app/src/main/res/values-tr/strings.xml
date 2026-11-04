@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Turkish translation, source: ProPDA English and Russian resources. -->
 <resources>
+    <!-- Localized network and HTTP error messages -->
+    <string name="network_error_cloudflare">Site doğrulama istiyor (Cloudflare). Farklı bir ağ deneyin veya 4PDA sitesini tarayıcıda açıp yeniden deneyin.</string>
+    <string name="network_error_unauthorized">Oturum açmanız gerekiyor (401). Bu bölüme erişmek için giriş yapın.</string>
+    <string name="network_error_forbidden">Erişim reddedildi (403). Bazı içerikler için oturum açmanız veya farklı bir ağ kullanmanız gerekebilir.</string>
+    <string name="network_error_not_found">Sayfa bulunamadı (404). Forum arayüzü değişmiş veya sayfa kaldırılmış olabilir.\nURL: %1$s</string>
+    <string name="network_error_rate_limit">Çok fazla istek gönderildi (429). 4PDA erişimi geçici olarak sınırladı. Yaklaşık 15 saniye sonra yeniden deneyin.</string>
+    <string name="network_error_news">Haber yüklenemedi.</string>
+    <string name="network_error_timeout">Sunucu veya ağ zamanında yanıt vermedi. Bağlantınızı kontrol edip yeniden deneyin.</string>
+    <string name="network_error_forum_host">4pda.to sitesine bağlanılamadı. İnternet bağlantınızı kontrol edin veya farklı bir ağ deneyin.</string>
+    <string name="network_error_host">Sunucu bulunamadı. İnternet bağlantınızı kontrol edin.</string>
+    <string name="network_error_ssl">Güvenli bağlantı hatası. Site ağınızda engellenmiş veya sertifikanın süresi dolmuş olabilir.</string>
+
     <string name="navigation_drawer_open">Gezinme menüsünü aç</string>
     <string name="navigation_drawer_close">Gezinme menüsünü kapat</string>
     <!-- ACRA Crash dialog-->
