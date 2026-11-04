@@ -1,4 +1,7 @@
 <resources>
+    <string name="other_profile_open">Перейти в профиль</string>
+    <string name="other_profile_sign_in">Авторизоваться</string>
+
     <!-- Localized network and HTTP error messages -->
     <string name="network_error_cloudflare">Сайт запросил проверку (Cloudflare). Отключите VPN/прокси или откройте 4PDA в браузере и повторите.</string>
     <string name="network_error_unauthorized">Требуется авторизация (401). Войдите в аккаунт для доступа к этому разделу.</string>

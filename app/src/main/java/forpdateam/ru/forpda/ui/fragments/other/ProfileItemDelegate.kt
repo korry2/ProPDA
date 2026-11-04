@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
+import forpdateam.ru.forpda.R
 import forpdateam.ru.forpda.common.ForPdaCoil
 import forpdateam.ru.forpda.databinding.ItemOtherProfileBinding
 import forpdateam.ru.forpda.entity.remote.profile.ProfileModel
@@ -55,10 +56,10 @@ class ProfileItemDelegate(
 
             if (profileItem != null) {
                 binding.profileNick.text = profileItem.nick
-                binding.profileDesc.text = "Перейти в профиль"
+                binding.profileDesc.setText(R.string.other_profile_open)
             } else {
-                binding.profileNick.text = "Гость"
-                binding.profileDesc.text = "Авторизоваться"
+                binding.profileNick.setText(R.string.auth_guest)
+                binding.profileDesc.setText(R.string.other_profile_sign_in)
             }
             binding.root.updateLayoutParams<RecyclerView.LayoutParams> {
                 leftMargin = binding.root.dp16

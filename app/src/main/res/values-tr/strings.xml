@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Turkish translation, source: ProPDA English and Russian resources. -->
 <resources>
+    <string name="other_profile_open">Profili aç</string>
+    <string name="other_profile_sign_in">Oturum aç</string>
+
     <!-- Localized network and HTTP error messages -->
     <string name="network_error_cloudflare">Site doğrulama istiyor (Cloudflare). Farklı bir ağ deneyin veya 4PDA sitesini tarayıcıda açıp yeniden deneyin.</string>
     <string name="network_error_unauthorized">Oturum açmanız gerekiyor (401). Bu bölüme erişmek için giriş yapın.</string>
@@ -968,7 +971,7 @@
     <string name="bg_check_diagnostics_copied">Günlük kopyalandı</string>
     <string name="bg_check_diagnostics_copy">Kopyala</string>
     <string name="bg_check_diagnostics_empty">Günlük boş. İlk arka plan kontrolünden sonra kayıtlar görünür.</string>
-    <string name="closeable_info_other_menu_customize">Menüyü düzenlemek için bir kutucuğa basılı tutun: bölümler arasında taşıyın, konu/sohbet/arama/bağlantı ekleyin veya gereksizleri kaldırın</string>
+    <string name="closeable_info_other_menu_customize">Menüyü düzenlemek için bir kutucuğa basılı tutun. Öğeleri taşıyabilir, ekleyebilir veya kaldırabilirsiniz.</string>
     <string name="codes_name_release">Sürüm yayımlayan</string>
     <string name="contacts_list_empty">Kişi listesi boş</string>
     <string name="crash_report_dialog_message">Önceki çalışmada hata oluştu. Hata raporu geliştiriciye gönderilsin mi? Rapor, hata izini ve cihaz modelini içerir; kişisel verileri içermez.</string>
