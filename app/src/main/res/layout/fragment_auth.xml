@@ -153,42 +153,52 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <FrameLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end">
+                    android:minHeight="@dimen/dp48">
 
+                    <!-- Keep both controls separate even for longer translations. -->
                     <androidx.appcompat.widget.AppCompatCheckBox
                         android:id="@+id/auth_hidden"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp48"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp48"
                         android:focusable="false"
                         android:text="@string/auth_hidden"
                         android:textAllCaps="true"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/auth_send"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/auth_send"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp48"
-                        android:layout_gravity="end"
                         android:enabled="false"
-                        android:text="@string/auth_btn_login" />
+                        android:text="@string/auth_btn_login"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
                     <com.google.android.material.progressindicator.CircularProgressIndicator
                         android:id="@+id/login_progress"
                         android:layout_width="@dimen/dp36"
                         android:layout_height="@dimen/dp36"
-                        android:layout_gravity="end|center_vertical"
                         android:layout_marginEnd="@dimen/content_padding_horizontal"
-                        android:visibility="gone" 
-            android:indeterminate="true"
-            app:indicatorColor="?attr/colorAccent"
-            app:indicatorSize="28dp"
-            app:trackThickness="3dp"
-            app:trackCornerRadius="2dp"/>
-                </FrameLayout>
+                        android:visibility="gone"
+                        android:indeterminate="true"
+                        app:indicatorColor="?attr/colorAccent"
+                        app:indicatorSize="28dp"
+                        app:trackThickness="3dp"
+                        app:trackCornerRadius="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/auth_send"
+                        app:layout_constraintBottom_toBottomOf="@id/auth_send" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
