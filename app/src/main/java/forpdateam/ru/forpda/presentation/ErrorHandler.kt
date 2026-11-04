@@ -1,5 +1,8 @@
 package forpdateam.ru.forpda.presentation
 
+import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
+import forpdateam.ru.forpda.R
 import forpdateam.ru.forpda.client.GoogleCaptchaException
 import forpdateam.ru.forpda.client.OkHttpResponseException
 import forpdateam.ru.forpda.common.ArticleCommentsUserMessage
@@ -15,7 +18,8 @@ import javax.inject.Inject
  * Created by radiationx on 23.02.18.
  */
 class ErrorHandler @Inject constructor(
-        private val router: TabRouter
+        private val router: TabRouter,
+        @ApplicationContext private val context: Context
 ) : IErrorHandler {
 
     override fun handle(throwable: Throwable,  messageListener: ((Throwable, String?) -> Unit)?) {
@@ -57,17 +61,17 @@ class ErrorHandler @Inject constructor(
         networkErrorUserMessage(throwable)?.let { return it }
         when (throwable) {
             is GoogleCaptchaException ->
-                return "Сайт запросил проверку (Cloudflare). Отключите VPN/прокси или откройте 4pda в браузере и повторите."
+                return context.getString(R.string.network_error_cloudflare)
             is OkHttpResponseException ->
                 when (throwable.code) {
-                    401 -> return "Требуется авторизация (401). Войдите в аккаунт для доступа к этому разделу."
-                    403 -> return "Доступ запрещён (403). Для части контента нужна авторизация или другая сеть."
-                    404 -> return "Страница не найдена (404). Возможно, API форума изменилось или страница удалена.\nURL: ${shortUrl(throwable.url)}"
-                    429 -> return "Слишком много запросов подряд — 4pda временно ограничил загрузку (ошибка 429). Это не сбой сети или приложения, а защита форума от частых обращений. Подождите ~15 секунд и обновите."
+                    401 -> return context.getString(R.string.network_error_unauthorized)
+                    403 -> return context.getString(R.string.network_error_forbidden)
+                    404 -> return context.getString(R.string.network_error_not_found, shortUrl(throwable.url))
+                    429 -> return context.getString(R.string.network_error_rate_limit)
                 }
         }
         if (throwable is ArticleLoadException) {
-            return throwable.message ?: "Не удалось загрузить новость"
+            return throwable.message ?: context.getString(R.string.network_error_news)
         }
         // Check for auth-related messages
         val msg = throwable.message.orEmpty()
@@ -76,7 +80,7 @@ class ErrorHandler @Inject constructor(
         }
         if (msg.contains("empty after template", ignoreCase = true) ||
                 msg.contains("empty after parse", ignoreCase = true)) {
-            return "Не удалось загрузить новость"
+            return context.getString(R.string.network_error_news)
         }
         if (msg == "comments_html_present_but_parse_empty" ||
                 msg == "comments_count_positive_but_no_source" ||
@@ -95,11 +99,11 @@ class ErrorHandler @Inject constructor(
         var c: Throwable? = t
         while (c != null) {
             if (c is TimeoutException || c is SocketTimeoutException) {
-                return "Сервер или сеть не ответили вовремя. Проверьте подключение и попробуйте снова."
+                return context.getString(R.string.network_error_timeout)
             }
             val msg = c.message
             if (msg != null && msg.contains("did not signal an event", ignoreCase = true)) {
-                return "Сервер или сеть не ответили вовремя. Проверьте подключение и попробуйте снова."
+                return context.getString(R.string.network_error_timeout)
             }
             c = c.cause
         }
@@ -117,9 +121,9 @@ class ErrorHandler @Inject constructor(
                 val msg = c.message.orEmpty()
                 return when {
                     msg.contains("4pda.to", ignoreCase = true) ->
-                        "Не удалось подключиться к 4pda.to. Проверьте интернет или используйте VPN (сайт может быть заблокирован)."
+                        context.getString(R.string.network_error_forum_host)
                     else ->
-                        "Не удалось найти сервер. Проверьте подключение к интернету."
+                        context.getString(R.string.network_error_host)
                 }
             }
             // SSL ошибки часто связаны с блокировками
@@ -128,7 +132,7 @@ class ErrorHandler @Inject constructor(
                 msg.contains("SSL", ignoreCase = true) ||
                 msg.contains("TLS", ignoreCase = true) ||
                 msg.contains("certificate", ignoreCase = true)) {
-                return "Ошибка защищённого соединения. Возможно, сайт заблокирован провайдером или истёк сертификат."
+                return context.getString(R.string.network_error_ssl)
             }
             c = c.cause
         }
